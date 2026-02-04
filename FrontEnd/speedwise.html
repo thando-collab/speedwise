@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SpeedWise – All Pages</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="speedwise.css">
+</head>
+<body>
+
+<!-- ================= WELCOME ================= -->
+<div id="welcomePage" class="page active welcome">
+  <i class="fas fa-car-side fa-3x"></i>
+  <h1>SpeedWise</h1>
+  <p>Drive Smart • Drive Safe</p>
+  <button onclick="showPage('loginPage')"><i class="fas fa-sign-in-alt"></i> Log In</button>
+  <button onclick="showPage('signupPage')"><i class="fas fa-user-plus"></i> Sign Up</button>
+</div>
+
+<!-- ================= LOGIN ================= -->
+<div id="loginPage" class="page modal-content">
+  <h2>Login</h2>
+  <div class="input-group">
+    <i class="fas fa-envelope"></i>
+    <input type="email" placeholder="Email Address" required>
+  </div>
+  <div class="input-group">
+    <i class="fas fa-lock"></i>
+    <input type="password" placeholder="Password" required>
+  </div>
+  <button onclick="loginUser()">Log In</button>
+  <p>Don’t have an account? <a href="#" onclick="showPage('signupPage')">Sign Up</a></p>
+  <p><a href="#" onclick="showPage('welcomePage')">← Back to Welcome</a></p>
+</div>
+
+<!-- ================= SIGNUP (Exact Modal Style) ================= -->
+<div id="signupPage" class="page">
+  <div class="modal">
+    <div class="modal-content">
+      <h2>Create Account</h2>
+
+      <!-- User Info -->
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="password" placeholder="Password" required>
+
+      <!-- Car Info -->
+      <h3 class="section-title">Car Information</h3>
+      <input type="text" placeholder="Car Brand (e.g. Toyota)" required>
+      <input type="text" placeholder="Car Model (e.g. Corolla)" required>
+      <input type="text" placeholder="Vehicle Number" required>
+
+      <select required>
+        <option value="">Select Car Type</option>
+        <option>Sedan</option>
+        <option>SUV</option>
+        <option>Hatchback</option>
+        <option>Truck</option>
+        <option>Van</option>
+        <option>Electric</option>
+      </select>
+
+      <button onclick="registerUser()">Sign Up</button>
+
+      <p><a href="#" onclick="showPage('welcomePage')">Back to Welcome</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div id="dashboardPage" class="page container">
+  <h2>Welcome, <span id="user-name"></span></h2>
+  <p>Your Vehicle: <span id="vehicle-info"></span></p>
+
+  <div class="gps-stats">
+    <p>Current Road Limit: <span id="current-limit">50</span> MPH</p>
+    <p>Next Road Limit: <span id="next-limit">60</span> MPH</p>
+    <p id="alertText" class="alert-text"></p>
+  </div>
+
+  <div class="stats">
+    <p>Current Speed: <span id="current-speed">0</span> MPH</p>
+  </div>
+
+  <div class="speedometer">
+    <div class="needle" id="needle"></div>
+    <div class="speed-display" id="speed-display">0 MPH</div>
+  </div>
+
+  <div class="violations">
+    <h3>Recent Violations</h3>
+    <ul id="violations-list"></ul>
+  </div>
+
+  <div id="map"></div>
+  <button id="trip-btn" onclick="toggleTrip()">Start Trip</button>
+  <button onclick="voiceCommand()">Voice Command</button>
+  <button id="logout-btn" onclick="logoutDashboard()">Logout</button>
+</div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+
+<script src="speedwise.js"></script>
+</body>
+</html>
+
