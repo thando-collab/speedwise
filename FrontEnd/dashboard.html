@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SpeedWise Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body onload="loadDashboard()" class="dashboard-theme">
+
+
+<div class="dashboard">
+
+<header>
+
+<h1>SpeedWise</h1>
+
+<p id="welcomeMsg" aria-live="polite"></p>
+
+</header>
+
+<section class="card">
+
+<h2>Speed Monitor</h2>
+
+<div class="gauge">
+
+<div id="speedNeedle"></div>
+
+</div>
+
+<div id="speedValue">0 km/h</div>
+
+<canvas id="speedChart" height="120"></canvas>
+
+</section>
+
+<section class="card">
+
+<h2>Driver Status</h2>
+
+<p id="driverStatus">Driver Alert</p>
+
+<button class="btn" onclick="startVoiceControl()">Voice Command</button>
+
+</section>
+
+<section class="card">
+
+<h2>Child Pickup / Drop</h2>
+
+<p>Picked: <span id="childPicked">No</span></p>
+
+<p>Pickup Time: <span id="pickupTime">Not recorded</span></p>
+
+<p>Drop Time: <span id="dropTime">Not recorded</span></p>
+
+<button class="btn" onclick="childPickup()">Mark Picked</button>
+
+<button class="btn" onclick="childDrop()">Mark Dropped</button>
+
+</section>
+
+<section class="card">
+
+<h2>Trip Controls</h2>
+
+<button class="btn" onclick="startTrip()">Start Trip</button>
+
+</section>
+
+<section class="card">
+
+<h2>Live Bus Tracker</h2>
+
+<div id="map" style="height:300px;"></div>
+
+</section>
+
+<section class="card">
+
+<h2>System Alerts</h2>
+
+<div id="alerts"></div>
+
+</section>
+
+<footer>
+
+<button class="btn" onclick="logout()">Logout</button>
+
+</footer>
+
+
+</div>
+
+
+
+<script src="app.js"></script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgeMTsBm45VTbYKLE6Qse4vYhXgE_2J80&callback=initMap">
+</script>
+
+
+</body>
+
+</html>
